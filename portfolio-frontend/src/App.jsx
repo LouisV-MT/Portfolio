@@ -1,121 +1,119 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useEffect, useMemo, useRef, useState } from 'react';
+import projectsRaw from './data/projects.json';
+import Sidebar from './components/Sidebar';
+import Hero from './components/Hero';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import About from './components/About';
+import ProjectModal from './components/ProjectModal';
+
+const SECTION_IDS = ['hero', 'skills', 'projects', 'about'];
 
 function App() {
-  const [count, setCount] = useState(0)
+  const mainRef = useRef(null);
+  const sectionRefs = useRef([]);
+  const [activeSection, setActiveSection] = useState('hero');
+  const [modalProject, setModalProject] = useState(null);
+  const [showExplore, setShowExplore] = useState(false);
+
+  const projects = useMemo(() => [...projectsRaw].sort((a, b) => b.id - a.id), []);
+
+  useEffect(() => {
+    document.title = 'Minh Triet Vu - Full-Stack Developer';
+  }, []);
+
+  useEffect(() => {
+    const reveal = setTimeout(() => setShowExplore(true), 6200);
+    return () => clearTimeout(reveal);
+  }, []);
+
+  useEffect(() => {
+    const root = mainRef.current;
+    if (!root) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { root, threshold: 0.55 },
+    );
+
+    sectionRefs.current.forEach((section) => section && observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const root = mainRef.current;
+    if (!root) return;
+    let isScrolling = false;
+
+    const onWheel = (event) => {
+      if (modalProject) return;
+      event.preventDefault();
+      if (isScrolling) return;
+
+      isScrolling = true;
+      const direction = event.deltaY > 0 ? 1 : -1;
+      const currentIndex = Math.max(0, SECTION_IDS.indexOf(activeSection));
+      const targetIndex = currentIndex + direction;
+
+      if (targetIndex >= 0 && targetIndex < SECTION_IDS.length) {
+        const target = sectionRefs.current[targetIndex];
+        target?.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      window.setTimeout(() => {
+        isScrolling = false;
+      }, 750);
+    };
+
+    root.addEventListener('wheel', onWheel, { passive: false });
+    return () => root.removeEventListener('wheel', onWheel);
+  }, [activeSection, modalProject]);
+
+  useEffect(() => {
+    const root = mainRef.current;
+    if (!root) return;
+    root.style.overflow = modalProject ? 'hidden' : 'auto';
+  }, [modalProject]);
+
+  const scrollToSection = (id) => {
+    const targetIndex = SECTION_IDS.indexOf(id);
+    sectionRefs.current[targetIndex]?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="bg-off-white text-dark-slate font-sans min-h-screen">
+      <div className="md:grid md:grid-cols-12">
+        <Sidebar activeSection={activeSection} scrollToSection={scrollToSection} />
 
-      <div className="ticks"></div>
+        <main ref={mainRef} className="md:col-span-9 h-screen overflow-y-scroll scroll-snap-y no-scrollbar">
+          <Hero
+            ref={(el) => (sectionRefs.current[0] = el)}
+            showExplore={showExplore}
+            setShowExplore={setShowExplore}
+            scrollToSection={scrollToSection}
+          />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+          <Skills ref={(el) => (sectionRefs.current[1] = el)} />
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+          <Projects
+            ref={(el) => (sectionRefs.current[2] = el)}
+            projects={projects}
+            setModalProject={setModalProject}
+          />
+
+          <About ref={(el) => (sectionRefs.current[3] = el)} />
+        </main>
+      </div>
+
+      <ProjectModal modalProject={modalProject} setModalProject={setModalProject} />
+    </div>
+  );
 }
 
-export default App
+export default App;
