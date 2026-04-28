@@ -1,41 +1,66 @@
+import { useTranslation } from 'react-i18next';
 import { ensurePublicPath } from '../utils/helpers';
+import ChatWidget from './ChatWidget';
+
+const REPO_MAP = {
+  1: "group2project",       
+  3: "projectprograming3",  
+  4: "Pollarity-Backend",   
+  5: "n8n-AI-Finance",      
+  6: "VenueFLow",           
+  7: "YouView",             
+  8: "SupplyMind-Backend"   
+};
 
 export default function ProjectModal({ modalProject, setModalProject }) {
+  const { t, i18n } = useTranslation();
+  
   if (!modalProject) return null;
+
+  const backendRepoName = REPO_MAP[modalProject.id];
+  const isFrench = i18n.language.startsWith('fr');
+  
+  // Conditionally select the correct arrays/strings based on language
+  const description = isFrench && modalProject.fullDescription_fr ? modalProject.fullDescription_fr : modalProject.fullDescription;
+  const features = isFrench && modalProject.keyFeatures_fr ? modalProject.keyFeatures_fr : modalProject.keyFeatures;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-dark-slate/90 backdrop-blur-sm p-4 md:p-8" onClick={() => setModalProject(null)}>
-      <div className="bg-white w-full max-w-5xl rounded-2xl shadow-2xl relative flex flex-col max-h-[90vh] overflow-hidden" onClick={(event) => event.stopPropagation()}>
+      <div className="bg-white w-full max-w-6xl rounded-2xl shadow-2xl relative flex flex-col max-h-[90vh] overflow-hidden" onClick={(event) => event.stopPropagation()}>
         <button type="button" className="absolute top-4 right-4 text-dark-slate bg-white/90 hover:bg-gray-100 z-10 p-2.5 rounded-full backdrop-blur transition-all shadow-md" onClick={() => setModalProject(null)}>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
 
         <div className="flex-1 overflow-y-auto w-full p-6 md:p-10">
           <h3 className="text-3xl md:text-5xl font-bold text-dark-slate mb-6 text-center">{modalProject.title}</h3>
+          
           <div className="mb-12 w-full">
-            <img src={ensurePublicPath(modalProject.image)} alt={`Screenshot of ${modalProject.title}`} className="rounded-xl shadow-md w-full max-h-[500px] object-cover border border-gray-200" />
+            <img src={ensurePublicPath(modalProject.image)} alt={`Screenshot of ${modalProject.title}`} className="rounded-xl shadow-md w-full max-h-[400px] object-cover border-gray-200" />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-16">
-            <div className="lg:col-span-2 flex flex-col space-y-12">
+            
+            {/* Left Column: Descriptions */}
+            <div className="lg:col-span-2 flex flex-col space-y-10">
               <div>
-                <h4 className="font-bold text-2xl text-dark-slate mb-4 border-b-2 border-gray-100 pb-2">Overview</h4>
-                <p className="text-lg text-mid-slate leading-relaxed">{modalProject.fullDescription}</p>
+                <h4 className="font-bold text-2xl text-dark-slate mb-4 border-b-2 border-gray-100 pb-2">{t('modal.overview')}</h4>
+                <p className="text-lg text-mid-slate leading-relaxed">{description}</p>
               </div>
 
               <div>
-                <h4 className="font-bold text-2xl text-dark-slate mb-4 border-b-2 border-gray-100 pb-2">Key Features</h4>
+                <h4 className="font-bold text-2xl text-dark-slate mb-4 border-b-2 border-gray-100 pb-2">{t('modal.keyFeatures')}</h4>
                 <ul className="list-disc pl-5 text-mid-slate space-y-2 text-lg leading-relaxed">
-                  {modalProject.keyFeatures?.map((feature) => (
-                    <li key={feature}>{feature}</li>
+                  {features?.map((feature, idx) => (
+                    <li key={idx}>{feature}</li>
                   ))}
                 </ul>
               </div>
             </div>
 
-            <div className="lg:col-span-1 flex flex-col space-y-12">
+            {/* Right Column: Links & Stack */}
+            <div className="lg:col-span-1 flex flex-col space-y-10">
               <div>
-                <h4 className="font-bold text-2xl text-dark-slate mb-4 border-b-2 border-gray-100 pb-2">Tech Stack</h4>
+                <h4 className="font-bold text-2xl text-dark-slate mb-4 border-b-2 border-gray-100 pb-2">{t('modal.techStack')}</h4>
                 <div className="flex flex-wrap">
                   {modalProject.tech?.map((tech) => (
                     <span key={tech} className="bg-gray-200 text-dark-slate text-xs font-semibold px-2.5 py-1 rounded mr-2 mb-2 inline-block shadow-sm">
@@ -46,22 +71,14 @@ export default function ProjectModal({ modalProject, setModalProject }) {
               </div>
 
               <div>
-                <h4 className="font-bold text-2xl text-dark-slate mb-4 border-b-2 border-gray-100 pb-2">Project Links</h4>
+                <h4 className="font-bold text-2xl text-dark-slate mb-4 border-b-2 border-gray-100 pb-2">{t('modal.projectLinks')}</h4>
 
                 {modalProject.credentials && (
                   <div className="bg-off-white p-4 rounded-lg mb-4 text-sm border border-gray-200 shadow-inner">
-                    <p className="font-bold text-dark-slate mb-2">Demo Credentials:</p>
+                    <p className="font-bold text-dark-slate mb-2">{t('modal.demoCredentials')}:</p>
                     <div className="space-y-1">
-                      <p>
-                        <span className="font-semibold text-mid-slate">Email:</span>
-                        <br />
-                        <span className="font-mono text-xs break-all">{modalProject.credentials.email}</span>
-                      </p>
-                      <p>
-                        <span className="font-semibold text-mid-slate">Password:</span>
-                        <br />
-                        <span className="font-mono text-xs break-all">{modalProject.credentials.password}</span>
-                      </p>
+                      <p><span className="font-semibold text-mid-slate">{t('modal.email')}:</span><br /><span className="font-mono text-xs break-all">{modalProject.credentials.email}</span></p>
+                      <p><span className="font-semibold text-mid-slate">{t('modal.password')}:</span><br /><span className="font-mono text-xs break-all">{modalProject.credentials.password}</span></p>
                     </div>
                   </div>
                 )}
@@ -74,27 +91,41 @@ export default function ProjectModal({ modalProject, setModalProject }) {
                     </a>
                   ))}
 
-                  {modalProject.deepwikiLinks?.map((link) => (
-                    <a key={link.url} href={link.url} target="_blank" rel="noreferrer" className="flex items-center justify-center w-full bg-mid-slate text-white px-4 py-2.5 rounded-lg hover:opacity-90 transition shadow-sm">
-                      {link.label}
-                    </a>
-                  ))}
-
                   {modalProject.liveDemo && (
                     <a href={modalProject.liveDemo} target="_blank" rel="noreferrer" className="flex items-center justify-center w-full bg-beige text-dark-slate font-bold px-4 py-2.5 rounded-lg hover:opacity-80 transition shadow-sm">
-                      Live Demo &rarr;
+                      {t('modal.liveDemo')}
                     </a>
                   )}
 
                   {modalProject.pdfLink && (
                     <a href={ensurePublicPath(modalProject.pdfLink)} target="_blank" rel="noreferrer" className="flex items-center justify-center w-full border-2 border-dark-slate text-dark-slate font-bold px-4 py-2.5 rounded-lg hover:bg-gray-50 transition shadow-sm">
-                      View Specs
+                      {t('modal.viewSpecs')}
                     </a>
                   )}
                 </div>
               </div>
             </div>
           </div>
+
+          {/* BOTTOM SECTION: Full Width Context-Aware AI */}
+          {backendRepoName && (
+            <div className="mt-12 pt-8 border-t-2 border-gray-100 w-full">
+              <div className="flex flex-col items-center mb-6">
+                <h4 className="font-bold text-2xl text-dark-slate mb-2 flex items-center gap-3">
+                  <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                  {t('modal.aiAnalystTitle')}
+                </h4>
+                <p className="text-base text-mid-slate text-center max-w-2xl">
+                  {t('modal.aiAnalystDesc')}
+                </p>
+              </div>
+              
+              <div className="w-full max-w-5xl mx-auto">
+                <ChatWidget projectTitle={modalProject.title} repoName={backendRepoName} />
+              </div>
+            </div>
+          )}
+
         </div>
       </div>
     </div>

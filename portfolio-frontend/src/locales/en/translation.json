@@ -1,0 +1,53 @@
+{
+  "nav": {
+    "home": "Home",
+    "skills": "Skills",
+    "projects": "Projects",
+    "about": "About Me"
+  },
+  "hero": {
+    "title": "Full-Stack Developer",
+    "bio": "From the precision of a sushi knife to the logic of clean code, I build dedicated and detail-oriented web applications. I'm a full-stack developer based in Montreal, currently on the Dean's List at John Abbott College.",
+    "button": "See More"
+  },
+  "skills": {
+    "title": "My Technical Skills",
+    "categories": {
+      "Languages": "Languages",
+      "Frontend": "Frontend",
+      "Backend": "Backend",
+      "Databases": "Databases",
+      "Hosting & DevOps": "Hosting & DevOps",
+      "Tools & Methods": "Tools & Methods"
+    }
+  },
+  "modal": {
+    "viewDetails": "View Details",
+    "overview": "Overview",
+    "keyFeatures": "Key Features",
+    "techStack": "Tech Stack",
+    "projectLinks": "Project Links",
+    "demoCredentials": "Demo Credentials",
+    "email": "Email",
+    "password": "Password",
+    "liveDemo": "Live Demo →",
+    "viewSpecs": "View Specs",
+    "aiAnalystTitle": "Codebase AI Analyst",
+    "aiAnalystDesc": "I have ingested the complete source code for this project. Ask me about the system architecture, database schema, or how specific features work under the hood."
+  },
+  "chat": {
+    "title": "Ask AI about Codebase",
+    "greeting": "Hi! I'm Louis's AI assistant. Ask me anything about the architecture, code, or features of {{projectTitle}}!",
+    "placeholder": "Ask a technical question about {{projectTitle}}...",
+    "send": "Send",
+    "analyzing": "Analyzing {{repoName}}...",
+    "error": "I'm having trouble connecting to the local backend. Is the Python server running?"
+  },
+  "about": {
+    "title": "About Me",
+    "p1": "I started my development experience while I was employed at Taiga Motors. I worked on intricate systems as a battery assembler, where even one error may have catastrophic effects. I learned the value of following procedures and communicating clearly from this, and it has a direct impact on how I approach software architecture and teamwork.",
+    "p2": "I am working full-time as a sushi chef and attending night classes at John Abbott. Writing clean, efficient, and error-free code is based on the same concepts I learnt when working in the kitchen: extreme precision, constancy under pressure, and a profound respect for the process.",
+    "p3": "I've managed to combine this practical experience with my academics, where I've continuously made the Dean's List.",
+    "p4": "When I'm not coding, you can usually find me exploring Montreal's food scene, enjoy a short gaming break or playing DnD."
+  }
+}

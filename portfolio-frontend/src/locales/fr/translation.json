@@ -1,0 +1,53 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "about": "À Propos"
+  },
+  "hero": {
+    "title": "Développeur Full-Stack",
+    "bio": "De la précision d'un couteau à sushi à la logique d'un code propre, je conçois des applications web avec dévouement et minutie. Je suis un développeur full-stack basé à Montréal, actuellement sur le palmarès du doyen au Collège John Abbott.",
+    "button": "Voir Plus"
+  },
+  "skills": {
+    "title": "Mes Compétences Techniques",
+    "categories": {
+      "Languages": "Langages",
+      "Frontend": "Front-end",
+      "Backend": "Back-end",
+      "Databases": "Bases de données",
+      "Hosting & DevOps": "Hébergement & DevOps",
+      "Tools & Methods": "Outils & Méthodes"
+    }
+  },
+  "modal": {
+    "overview": "Aperçu",
+    "viewDetails": "Voir les détails",
+    "keyFeatures": "Fonctionnalités Clés",
+    "techStack": "Technologies",
+    "projectLinks": "Liens du Projet",
+    "demoCredentials": "Identifiants de Démo",
+    "email": "Courriel",
+    "password": "Mot de passe",
+    "liveDemo": "Démo en Direct →",
+    "viewSpecs": "Voir les Spécifications",
+    "aiAnalystTitle": "Analyste IA du Code",
+    "aiAnalystDesc": "J'ai assimilé le code source complet de ce projet. Posez-moi des questions sur l'architecture, la base de données ou le fonctionnement technique."
+  },
+  "chat": {
+    "title": "Questionner l'IA sur le code",
+    "greeting": "Bonjour ! Je suis l'assistant IA de Louis. Posez-moi vos questions sur l'architecture ou le code de {{projectTitle}} !",
+    "placeholder": "Posez une question technique sur {{projectTitle}}...",
+    "send": "Envoyer",
+    "analyzing": "Analyse de {{repoName}} en cours...",
+    "error": "J'ai du mal à me connecter au serveur local. Le backend Python est-il en cours d'exécution ?"
+  },
+  "about": {
+    "title": "À Propos",
+    "p1": "J'ai commencé mon expérience de développement alors que j'étais employé chez Taiga Motors. J'ai travaillé sur des systèmes complexes en tant qu'assembleur de batteries, où même une seule erreur peut avoir des effets catastrophiques. J'y ai appris l'importance de suivre les procédures et de communiquer clairement, ce qui a un impact direct sur mon approche de l'architecture logicielle et du travail d'équipe.",
+    "p2": "Je travaille à temps plein comme chef sushi et je suis des cours du soir à John Abbott. Écrire un code propre, efficace et sans erreur repose sur les mêmes concepts que j'ai appris en cuisine : une précision extrême, une constance sous pression et un profond respect du processus.",
+    "p3": "J'ai réussi à combiner cette expérience pratique avec mes études, figurant continuellement sur le palmarès du doyen.",
+    "p4": "Quand je ne code pas, vous me trouverez généralement en train d'explorer la scène gastronomique montréalaise, de faire une pause gaming ou de jouer à DnD."
+  }
+}

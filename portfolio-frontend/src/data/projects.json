@@ -3,7 +3,9 @@
     "id": 1,
     "title": "E-commerce Shop",
     "cardDescription": "Full-featured e-commerce site built with PHP and MySQL.",
+    "cardDescription_fr": "Site e-commerce complet développé avec PHP et MySQL.",
     "fullDescription": "A complete e-commerce platform following MVC architecture patterns. Includes user authentication system, shopping cart functionality, product catalog management, and a comprehensive admin panel. Built with PHP backend and MySQL database, styled with Bootstrap for responsive design.",
+    "fullDescription_fr": "Une plateforme e-commerce complète suivant l'architecture MVC. Comprend un système d'authentification des utilisateurs, un panier d'achat, la gestion du catalogue de produits et un panneau d'administration complet. Développé avec un back-end PHP et une base de données MySQL, stylisé avec Bootstrap pour un design réactif.",
     "keyFeatures": [
       "User authentication & account management",
       "Product catalog with search & filtering",
@@ -12,6 +14,15 @@
       "Admin panel for inventory management",
       "Payment processing integration",
       "Responsive Bootstrap UI"
+    ],
+    "keyFeatures_fr": [
+      "Authentification utilisateur et gestion de compte",
+      "Catalogue de produits avec recherche et filtres",
+      "Panier d'achat et système de paiement",
+      "Gestion et suivi des commandes",
+      "Panneau d'administration pour la gestion des stocks",
+      "Intégration du traitement des paiements",
+      "Interface utilisateur Bootstrap réactive"
     ],
     "image": "images/E-Commerce.png",
     "pdfLink": null,
@@ -27,7 +38,9 @@
     "id": 2,
     "title": "Recipe Today",
     "cardDescription": "Frontend recipe browser using vanilla JS and TheMealDB API.",
+    "cardDescription_fr": "Navigateur de recettes frontend utilisant JS natif et l'API TheMealDB.",
     "fullDescription": "A lightweight, client-side recipe discovery application built with vanilla JavaScript. Fetches recipe data from the TheMealDB API in real-time, providing users with a responsive browsing experience. Pure frontend implementation showcasing modern JavaScript ES6 features and API integration best practices.",
+    "fullDescription_fr": "Une application légère de découverte de recettes côté client construite avec du JavaScript pur. Récupère les données de recettes de l'API TheMealDB en temps réel, offrant aux utilisateurs une expérience de navigation réactive. Implémentation purement frontend mettant en valeur les fonctionnalités modernes d'ES6 et les meilleures pratiques d'intégration d'API.",
     "keyFeatures": [
       "Real-time recipe data fetching from TheMealDB API",
       "Advanced search & filtering functionality",
@@ -36,6 +49,15 @@
       "Local storage for favorites",
       "Dynamic DOM manipulation with vanilla JS",
       "Clean, maintainable code structure"
+    ],
+    "keyFeatures_fr": [
+      "Récupération de données en temps réel depuis l'API TheMealDB",
+      "Fonctionnalité avancée de recherche et de filtrage",
+      "Pages détaillées avec ingrédients et instructions",
+      "Design réactif pour mobile et bureau",
+      "Stockage local pour les favoris",
+      "Manipulation dynamique du DOM avec du JS pur",
+      "Structure de code propre et maintenable"
     ],
     "image": "images/RecipeToday.png",
     "pdfLink": null,
@@ -51,7 +73,9 @@
     "id": 3,
     "title": "Recipe Hub",
     "cardDescription": "Full-stack recipe management system built with Spring Boot.",
+    "cardDescription_fr": "Système complet de gestion de recettes construit avec Spring Boot.",
     "fullDescription": "A comprehensive recipe management platform with full-stack architecture. Built with Spring Boot backend and Thymeleaf templating for server-side rendering. Features user authentication, role-based access control, an admin dashboard, and integration with external recipe APIs. Containerized with Docker for easy deployment.",
+    "fullDescription_fr": "Une plateforme complète de gestion de recettes avec une architecture full-stack. Construite avec un backend Spring Boot et des modèles Thymeleaf pour le rendu côté serveur. Comprend l'authentification des utilisateurs, le contrôle d'accès basé sur les rôles, un tableau de bord d'administration et l'intégration avec des API de recettes externes. Conteneurisé avec Docker pour un déploiement facile.",
     "keyFeatures": [
       "User authentication & role-based access",
       "Recipe CRUD operations with rich metadata",
@@ -60,6 +84,15 @@
       "External API integration for recipe sourcing",
       "Docker containerization & cloud deployment",
       "Responsive UI with Thymeleaf templates"
+    ],
+    "keyFeatures_fr": [
+      "Authentification utilisateur et accès basé sur les rôles",
+      "Opérations CRUD avec métadonnées enrichies",
+      "Tableau de bord d'administration pour la gestion du contenu",
+      "Affichage des étiquettes nutritionnelles et détails des recettes",
+      "Intégration d'API externes pour les recettes",
+      "Conteneurisation Docker et déploiement cloud",
+      "Interface réactive avec modèles Thymeleaf"
     ],
     "image": "images/RecipeHub.png",
     "pdfLink": "images/RecipeApp.pdf",
@@ -75,7 +108,9 @@
     "id": 4,
     "title": "Pollarity",
     "cardDescription": "AI-driven survey platform with bias correction.",
+    "cardDescription_fr": "Plateforme de sondage basée sur l'IA avec correction des biais.",
     "fullDescription": "An advanced survey platform that leverages AI to enhance data quality and reduce survey bias. Users can create surveys where an integrated AI assistant helps generate unbiased questions based on descriptions and refines existing ones. Built with React frontend and Node.js/Express backend with PostgreSQL database, deployed on Render.",
+    "fullDescription_fr": "Une plateforme de sondage avancée qui exploite l'IA pour améliorer la qualité des données et réduire les biais. Les utilisateurs peuvent créer des sondages où un assistant IA aide à générer des questions impartiales et affine celles existantes. Construit avec un frontend React et un backend Node.js/Express avec une base de données PostgreSQL, déployé sur Render.",
     "keyFeatures": [
       "AI-powered question generation & refinement using OpenAI API",
       "User authentication & survey management",
@@ -83,6 +118,14 @@
       "Export & analytics dashboard",
       "JWT & Passport authentication strategies",
       "Deployed on Render with SSL certificates"
+    ],
+    "keyFeatures_fr": [
+      "Génération et affinement de questions par IA via l'API OpenAI",
+      "Authentification utilisateur et gestion des sondages",
+      "Détection et correction des biais en temps réel",
+      "Tableau de bord d'exportation et d'analyse",
+      "Stratégies d'authentification JWT et Passport",
+      "Déployé sur Render avec certificats SSL"
     ],
     "image": "images/Pollarity.png",
     "pdfLink": "images/Pollarity.pdf",
@@ -102,7 +145,9 @@
     "id": 5,
     "title": "Finance Tracker",
     "cardDescription": "Automated receipt scanning & reporting via WhatsApp.",
+    "cardDescription_fr": "Numérisation automatisée des reçus et rapports via WhatsApp.",
     "fullDescription": "A complex n8n automation workflow that transforms WhatsApp into a personal finance assistant. It handles receipt image uploads via OCR technology, interacts with the Google Drive API to manage spreadsheets automatically, and provides real-time transaction logging. The system includes secure authentication flow and automated callback handling for seamless user experience.",
+    "fullDescription_fr": "Un flux de travail d'automatisation n8n complexe qui transforme WhatsApp en un assistant financier personnel. Il gère les téléchargements d'images de reçus via la technologie OCR, interagit avec l'API Google Drive pour gérer automatiquement les feuilles de calcul, et fournit un enregistrement des transactions en temps réel. Le système comprend un flux d'authentification sécurisé.",
     "keyFeatures": [
       "Receipt image capture & OCR processing",
       "AI categorization of items",
@@ -110,6 +155,14 @@
       "Real-time transaction logging",
       "WhatsApp Business API integration",
       "Secure authentication & callback handling"
+    ],
+    "keyFeatures_fr": [
+      "Capture d'image de reçu et traitement OCR",
+      "Catégorisation des articles par l'IA",
+      "Intégration automatisée avec les feuilles de calcul Google Drive",
+      "Enregistrement des transactions en temps réel",
+      "Intégration de l'API WhatsApp Business",
+      "Authentification sécurisée et gestion des rappels"
     ],
     "image": "images/AI-Finance.png",
     "pdfLink": "images/ReceiptRadar.pdf",
@@ -125,7 +178,9 @@
     "id": 6,
     "title": "VenueFlow",
     "cardDescription": "WPF application for wedding venue management & seating.",
+    "cardDescription_fr": "Application WPF pour la gestion et le placement des salles de mariage.",
     "fullDescription": "A comprehensive desktop application designed for wedding venue management and event coordination. It streamlines the planning process by enabling Excel-based guest list imports with intelligent data parsing. Features an automated seating algorithm that optimizes table arrangements based on guest preferences and relationships.",
+    "fullDescription_fr": "Une application de bureau complète conçue pour la gestion des salles de mariage et la coordination d'événements. Elle simplifie le processus de planification en permettant l'importation de listes d'invités Excel avec une analyse intelligente des données. Comprend un algorithme de placement automatisé qui optimise la disposition des tables en fonction des préférences et relations.",
     "keyFeatures": [
       "Excel guest list import & parsing",
       "Automated intelligent seating algorithm",
@@ -133,6 +188,14 @@
       "Guest preference management",
       "Event timeline & budget tracking",
       "Comprehensive venue management dashboard"
+    ],
+    "keyFeatures_fr": [
+      "Importation et analyse de listes d'invités Excel",
+      "Algorithme de placement intelligent automatisé",
+      "Optimisation de la disposition des tables",
+      "Gestion des préférences des invités",
+      "Suivi du budget et du calendrier de l'événement",
+      "Tableau de bord complet de gestion de salle"
     ],
     "image": "images/VenueFlow.png",
     "pdfLink": "images/VenueFlow.pdf",
@@ -150,7 +213,9 @@
     "id": 7,
     "title": "YouView",
     "cardDescription": "Custom YouTube viewer with premium subscriptions.",
+    "cardDescription_fr": "Visionneuse YouTube personnalisée avec abonnements premium.",
     "fullDescription": "A full-stack video discovery and streaming platform built with ASP.NET Core. Features infinite-scroll video feeds, channel discovery, video uploads with metadata editing, and Stripe-powered premium subscriptions. Includes comprehensive user account management, watch history tracking, and video recommendations based on user behavior.",
+    "fullDescription_fr": "Une plateforme full-stack de découverte et de diffusion de vidéos construite avec ASP.NET Core. Dispose de flux vidéo à défilement infini, de la découverte de chaînes, du téléchargement de vidéos avec édition de métadonnées, et d'abonnements premium gérés par Stripe. Comprend une gestion complète des comptes, un historique de visionnage et des recommandations.",
     "keyFeatures": [
       "Infinite-scroll video feed with lazy loading",
       "Channel discovery & subscription management",
@@ -160,6 +225,16 @@
       "Premium subscription with Stripe integration",
       "Search functionality with advanced filtering",
       "User account & profile management"
+    ],
+    "keyFeatures_fr": [
+      "Flux vidéo à défilement infini avec chargement différé",
+      "Découverte de chaînes et gestion des abonnements",
+      "Téléchargement de vidéos et édition de métadonnées",
+      "Historique de visionnage et recommandations",
+      "Gestion des vidéos aimées/favorites",
+      "Abonnement premium avec intégration Stripe",
+      "Fonctionnalité de recherche avec filtrage avancé",
+      "Gestion des comptes et profils utilisateurs"
     ],
     "image": "images/YouView.png",
     "pdfLink": "images/YouView.pdf",
@@ -175,7 +250,9 @@
     "id": 8,
     "title": "SupplyMind",
     "cardDescription": "Web application for streamlining supply chain management.",
+    "cardDescription_fr": "Application web pour optimiser la gestion de la chaîne d'approvisionnement.",
     "fullDescription": "A full-stack supply chain management platform with separate React frontend and Spring Boot backend. Enables real-time inventory tracking, purchase order management, and automated notifications. Features WebSocket integration for live updates, Stripe payment processing, and role-based access control for different user types. Mobile app included with QR login compatibility",
+    "fullDescription_fr": "Une plateforme full-stack de gestion de la chaîne d'approvisionnement avec frontend React et backend Spring Boot séparés. Permet le suivi des stocks en temps réel, la gestion des bons de commande et des notifications automatisées. Intègre WebSocket pour les mises à jour en direct, les paiements Stripe et le contrôle d'accès basé sur les rôles. Application mobile incluse.",
     "keyFeatures": [
       "QR Login for quick and secure login using mobile app",
       "Real-time inventory tracking & updates",
@@ -186,6 +263,17 @@
       "Inbox system for notifications & alerts",
       "Dashboard analytics & reporting",
       "Dedicated mobile app version for easier input on the fly"
+    ],
+    "keyFeatures_fr": [
+      "Connexion QR pour un accès rapide et sécurisé",
+      "Suivi et mise à jour des stocks en temps réel",
+      "Création et gestion des bons de commande (PO)",
+      "Intégration WebSocket pour les notifications en direct",
+      "Prise en charge des paiements et abonnements Stripe",
+      "Contrôle d'accès basé sur les rôles (Admin, PO, etc.)",
+      "Système de boîte de réception pour les notifications et alertes",
+      "Analyses et rapports du tableau de bord",
+      "Application mobile dédiée pour la saisie simplifiée en déplacement"
     ],
     "image": "images/SupplyMind.png",
     "pdfLink": "images/SupplyMind.pdf",

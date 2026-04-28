@@ -1,14 +1,24 @@
 import { forwardRef } from 'react';
 import TypeIt from 'typeit-react';
+import { useTranslation } from 'react-i18next'; 
 
 const Hero = forwardRef(({ showExplore, setShowExplore, scrollToSection }, ref) => {
+  const { t, i18n } = useTranslation(); 
+
+  // Safely hides the cursor without destroying the internal instance, 
+  // preventing React unmount crashes!
+  const hideCursor = (instance) => {
+    const cursor = instance.getElement().querySelector('.ti-cursor');
+    if (cursor) cursor.style.display = 'none';
+  };
+
   return (
-    <section id="hero" ref={ref} className="h-screen flex items-center justify-center scroll-snap-start p-8 md:p-12">
-      <div>
+    <section id="hero" ref={ref} className="min-h-screen flex items-center justify-center md:snap-start p-8 md:p-12">
+      <div key={i18n.language}>
         <div className="space-y-2 font-mono text-2xl md:text-3xl tracking-tight">
           <h1>
             <TypeIt
-              options={{ speed: 50, startDelay: 900, cursor: true, afterComplete: (instance) => instance.destroy() }}
+              options={{ speed: 50, startDelay: 900, cursor: true, afterComplete: hideCursor }}
               getBeforeInit={(instance) => {
                 instance.type('<span class="text-mid-slate">String</span> <span class="text-dark-slate">name</span> = <span class="text-beige bg-dark-slate rounded-md px-2 py-1">"Minh Triet Vu"</span><span class="text-mid-slate">;</span>', { parse: true });
                 return instance;
@@ -17,9 +27,9 @@ const Hero = forwardRef(({ showExplore, setShowExplore, scrollToSection }, ref) 
           </h1>
           <h2>
             <TypeIt
-              options={{ speed: 50, startDelay: 2500, cursor: true, afterComplete: (instance) => instance.destroy() }}
+              options={{ speed: 50, startDelay: 2500, cursor: true, afterComplete: hideCursor }}
               getBeforeInit={(instance) => {
-                instance.type('<span class="text-dark-slate">$title</span> = <span class="text-beige bg-dark-slate rounded-md px-2 py-1">\'Full-Stack Developer\'</span><span class="text-mid-slate">;</span>', { parse: true });
+                instance.type(`<span class="text-dark-slate">$title</span> = <span class="text-beige bg-dark-slate rounded-md px-2 py-1">'${t('hero.title')}'</span><span class="text-mid-slate">;</span>`, { parse: true });
                 return instance;
               }}
             />
@@ -33,7 +43,7 @@ const Hero = forwardRef(({ showExplore, setShowExplore, scrollToSection }, ref) 
               instance
                 .type('<p><span class="text-gray-400">/*</span></p>', { parse: true })
                 .break()
-                .type('<p class="pl-4">From the precision of a sushi knife to the logic of clean code, I build dedicated and detail-oriented web applications. I\'m a full-stack developer based in Montreal, currently on the Dean\'s List at John Abbott College.</p>', { parse: true })
+                .type(`<p class="pl-4">${t('hero.bio')}</p>`, { parse: true })
                 .break()
                 .type('<p><span class="text-gray-400">*/</span></p>', { parse: true });
               return instance;
@@ -49,7 +59,7 @@ const Hero = forwardRef(({ showExplore, setShowExplore, scrollToSection }, ref) 
               showExplore ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            See More
+            {t('hero.button')}
           </button>
         </div>
       </div>
@@ -58,5 +68,4 @@ const Hero = forwardRef(({ showExplore, setShowExplore, scrollToSection }, ref) 
 });
 
 Hero.displayName = 'Hero';
-
 export default Hero;

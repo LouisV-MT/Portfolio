@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const SKILLS = [
   { title: 'Languages', items: ['Java', 'PHP', 'JavaScript', 'HTML','Python', 'CSS', 'SQL'] },
@@ -10,13 +11,17 @@ const SKILLS = [
 ];
 
 const Skills = forwardRef((props, ref) => {
+  const { t } = useTranslation();
+
   return (
-    <section id="skills" ref={ref} className="h-screen flex flex-col scroll-snap-start p-8 md:p-12 pt-24">
-      <h2 className="text-4xl font-bold text-dark-slate mb-12">My Technical Skills</h2>
+    <section id="skills" ref={ref} className="min-h-screen flex flex-col md:snap-start p-8 md:p-12 pt-24 pb-28 md:pb-12">
+      <h2 className="text-4xl font-bold text-dark-slate mb-12">{t('skills.title')}</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-lg">
         {SKILLS.map((group) => (
           <div key={group.title}>
-            <h3 className="font-bold text-xl text-dark-slate mb-4 border-b-2 border-mid-slate pb-2">{group.title}</h3>
+            <h3 className="font-bold text-xl text-dark-slate mb-4 border-b-2 border-mid-slate pb-2">
+              {t(`skills.categories.${group.title}`)}
+            </h3>
             <ul className="space-y-2 text-mid-slate">
               {group.items.map((item) => (
                 <li key={item}>{item}</li>
@@ -30,5 +35,4 @@ const Skills = forwardRef((props, ref) => {
 });
 
 Skills.displayName = 'Skills';
-
 export default Skills;

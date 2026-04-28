@@ -53,6 +53,7 @@ function App() {
 
     const onWheel = (event) => {
       if (modalProject) return;
+      if (window.innerWidth < 768) return;
       event.preventDefault();
       if (isScrolling) return;
 
@@ -91,7 +92,7 @@ function App() {
       <div className="md:grid md:grid-cols-12">
         <Sidebar activeSection={activeSection} scrollToSection={scrollToSection} />
 
-        <main ref={mainRef} className="md:col-span-9 h-screen overflow-y-scroll scroll-snap-y no-scrollbar">
+        <main ref={mainRef} className="md:col-span-9 h-screen overflow-y-auto md:snap-y md:snap-mandatory no-scrollbar">
           <Hero
             ref={(el) => (sectionRefs.current[0] = el)}
             showExplore={showExplore}
