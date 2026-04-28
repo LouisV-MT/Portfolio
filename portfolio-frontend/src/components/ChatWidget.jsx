@@ -29,7 +29,10 @@ export default function ChatWidget({ projectTitle, repoName }) {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/chat', {
+      // Pulls the Azure Variable in production, falls back to localhost for local dev
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+      
+      const response = await fetch(`${apiUrl}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMessage.content, project_filter: repoName }),

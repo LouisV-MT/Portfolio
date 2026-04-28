@@ -18,6 +18,7 @@ export default function Sidebar({ activeSection, scrollToSection }) {
   );
 
   const renderSocials = () => (
+    // INCREASED: space-x-5 sm:space-x-6 (was space-x-3)
     <div className="flex justify-center space-x-5 sm:space-x-6 md:space-x-5">
       <a href="https://www.linkedin.com/in/minh-triet-vu/" target="_blank" rel="noreferrer" className="text-mid-slate hover:text-dark-slate transition-colors" title="LinkedIn">
         <svg className="w-5 h-5 md:w-7 md:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
@@ -32,15 +33,14 @@ export default function Sidebar({ activeSection, scrollToSection }) {
   );
 
   return (
-    // UPDATED: 'sticky top-0 z-[90]' is now applied globally, not just on md screens. 
-    // Added a subtle shadow and border that only appears on mobile.
-    <aside className="sticky top-0 md:col-span-3 md:h-screen py-3 px-4 sm:p-6 md:p-8 bg-beige border-b border-gray-200 md:border-none shadow-sm md:shadow-none z-[90]">
+    <aside className="md:col-span-3 md:sticky md:top-0 md:h-screen p-4 sm:p-6 md:p-8 bg-beige shadow-lg md:shadow-none z-[100]">
       <div className="flex flex-col h-full">
         
         {/* TOP HEADER */}
-        {/* Removed 'mb-4' so we don't get a weird floating transparent gap when scrolling */}
-        <div className="flex flex-row justify-between items-center w-full mb-0 md:mb-12">
+        <div className="flex flex-row justify-between items-center w-full mb-4 md:flex-col md:mb-12">
           
+          {/* LEFT SIDE: Image + Socials */}
+          {/* INCREASED: gap-6 sm:gap-8 (was gap-3) */}
           <div className="flex items-center gap-6 sm:gap-8 md:gap-0">
             <img
               src="/images/LouisV.jpg"
@@ -52,6 +52,7 @@ export default function Sidebar({ activeSection, scrollToSection }) {
             </div>
           </div>
 
+          {/* RIGHT SIDE: Language Toggle */}
           <div className="md:hidden">
             {renderToggle()}
           </div>
@@ -88,7 +89,7 @@ export default function Sidebar({ activeSection, scrollToSection }) {
           </ul>
         </nav>
 
-        {/* Desktop Actions */}
+        {/* Desktop Actions (Hidden on Mobile) */}
         <div className="hidden md:flex md:flex-col md:items-center md:mt-auto md:gap-4 md:border-t md:border-mid-slate/20 md:pt-5">
           {renderToggle()}
           {renderSocials()}
